@@ -1,9 +1,24 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { MenuPage } from './pages/menu/menu.page';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)},
+  { path: 'signup', loadChildren: () => import('./pages/signup/signup.module').then(m => m.SignupPageModule) },
+  { path: 'login', loadChildren: () => import('./pages/login/login.module').then(m => m.LoginPageModule) },
+  {
+    path: '',
+    component: MenuPage,
+    canActivate: [AuthGuard],
+    children: [
+      { path: '', loadChildren: () => import('./pages/list/list.module').then(m => m.ListPageModule) },
+
+    ]
+  },
+
+
+
+
 ];
 
 @NgModule({

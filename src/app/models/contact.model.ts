@@ -6,7 +6,8 @@ export class Contact {
         public name: string,
         public email: string,
         public cpf: string,
-        public image: string,
+        public phone: string,
+        public profile: string,
         public address: Address
     ) {
 
