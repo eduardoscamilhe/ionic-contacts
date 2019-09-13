@@ -1,0 +1,93 @@
+<ion-content class="ion-padding">
+  <form [formGroup]="form">
+    <ion-grid>
+      <ion-row class="ion-justify-content-center">
+        <ion-col sizeXs="12" sizeMd="6">
+          <ion-card>
+            <ion-card-header>
+              <ion-card-title>
+                NOVO CONTATO
+              </ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <ion-list lines="none">
+                <ion-item>
+
+                  <ion-label position="floating">Nome</ion-label>
+                  <ion-input type="name" formControlName="name"></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label position="floating">CPF</ion-label>
+                  <ion-input type="text" formControlName="cpf"></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label position="floating">E-Mail</ion-label>
+                  <ion-input type="email" formControlName="email"></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label position="floating">Telefone</ion-label>
+                  <ion-input type="text" formControlName="phone"></ion-input>
+                </ion-item>
+
+                <ion-item>
+                  <ion-label position="floating">Imagem (URL)</ion-label>
+                  <ion-input type="text" formControlName="profile"></ion-input>
+                </ion-item>
+              </ion-list>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-justify-content-center">
+        <ion-col sizeXs="12" sizeMd="6">
+
+          <ion-card>
+            <ion-card-header>
+              <ion-card-title>
+                ENDEREÇO
+              </ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <ion-list lines="none">
+                <ion-item>
+                  <ion-label position="floating">Cidade</ion-label>
+                  <ion-input type="text" formControlName="city"></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label position="floating">Rua</ion-label>
+                  <ion-input type="text" formControlName="street"></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label position="floating">Numero</ion-label>
+                  <ion-input type="text" formControlName="phone"></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label position="floating">Estado</ion-label>
+                  <ion-input type="text" formControlName="state"></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label position="floating">Pais</ion-label>
+                  <ion-input type="text" formControlName="country"></ion-input>
+                </ion-item>
+              </ion-list>
+            </ion-card-content>
+          </ion-card>
+
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-justify-content-center">
+        <ion-col sizeXs="12" sizeMd="6">
+          <p>
+            <ion-button color="success" shape="round" fill="outline" size="larger" [disabled]="form.invalid"
+              (click)="submit()" expand="full">INSERIR
+            </ion-button>
+            <br>
+            <ion-button color="medium" routerLink="" fill="clear" size="small" expand="full">VOLTAR
+            </ion-button>
+          </p>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+
+</ion-content>

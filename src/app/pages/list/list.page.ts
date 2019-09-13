@@ -14,14 +14,29 @@ export class ListPage implements OnInit {
   constructor(private service: DataService, private toastCtrl: ToastController) { }
 
   ngOnInit() {
-    const user = JSON.parse(localStorage.getItem('user.token'));
-    this.service.getContacts(user).subscribe(
-      (res: any) => {
-        this.contacts = res;
-        ContactUtil.saveContacts(this.contacts);
-      },
-      (err: any) => { }
-    );
+    // const user = JSON.parse(localStorage.getItem('user.token'));
+    // this.service.getContacts(user).subscribe(
+    //   (res: any) => {
+    //     this.contacts = res;
+    //     ContactUtil.saveContacts(this.contacts);
+    //   },
+    //   (err: any) => { }
+    // );
+    this.contacts = ContactUtil.getAllContacts();
+
+  }
+  removeContact(contact: any) {
+    let listContacts = ContactUtil.getAllContacts();
+    listContacts.splice(listContacts.indexOf(contact), 1);
+    ContactUtil.saveContacts(listContacts);
+    // this.service.getContacts(user).subscribe(
+    //   (res: any) => {
+    //     this.contacts = res;
+    //     ContactUtil.saveContacts(this.contacts);
+    //   },
+    //   (err: any) => { }
+    // );
+    this.contacts = listContacts;
   }
 
 }

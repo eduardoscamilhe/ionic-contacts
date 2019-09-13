@@ -18,7 +18,7 @@ export class DataService {
     }
 
     getContacts(user: any) {
-        return this.http.get(`${environment.url}contact/get/${user}`);
+        return this.http.get(`${environment.url}contact/get`);
     }
 
 }

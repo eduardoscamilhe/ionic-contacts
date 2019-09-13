@@ -13,18 +13,22 @@ import { MenuPage } from './pages/menu/menu.page';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { LoadingComponent } from './components/loading/loading.component';
+
 
 
 @NgModule({
-  declarations: [AppComponent, MenuPage],
+  declarations: [AppComponent, MenuPage, LoadingComponent],
   entryComponents: [],
   imports: [
     BrowserModule,
+
     IonicModule.forRoot(),
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+
   ],
   providers: [
     StatusBar,

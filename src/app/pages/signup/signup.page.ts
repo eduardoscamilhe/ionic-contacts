@@ -28,22 +28,22 @@ export class SignupPage implements OnInit {
   ngOnInit() {
   }
   async submit() {
-    const load = await this.loadCtrl.create({ message: "Estamos criando...", duration: 1000 });
+    const load = await this.loadCtrl.create({ message: "Estamos criando..." });//, duration: 1000
     load.present();
 
-    this.navCtrl.navigateRoot('login');
-    // this.service.createUser(this.form.value).subscribe(
-    //   (res: any) => {
-    //     load.dismiss();
-    //     this.navCtrl.navigateRoot('login');
-    //   },
-    //   (err: any) => {
-    //     load.dismiss();
-    //     this.showError('Sinto muito... Mas não deu para criar');
+    // this.navCtrl.navigateRoot('login');
+    this.service.createUser(this.form.value).subscribe(
+      (res: any) => {
+        load.dismiss();
+        this.navCtrl.navigateRoot('login');
+      },
+      (err: any) => {
+        load.dismiss();
+        this.showError('Erro ao criar');
 
-    //   }
+      }
 
-    // );
+    );
   }
   async showError(msg: string) {
     const toast = await this.toastCtrl.create({

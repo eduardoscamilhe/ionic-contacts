@@ -30,22 +30,22 @@ export class LoginPage implements OnInit {
   }
 
   async submit() {
-    const load = await this.loadCtrl.create({ message: "Autenticando...", duration: 1000 });
+    const load = await this.loadCtrl.create({ message: "Autenticando..." });
     load.present();
 
-    UserUtil.setUser('token');
-    this.navCtrl.navigateRoot('');
+    // UserUtil.setUser('token');
+    // this.navCtrl.navigateRoot('');
 
-    // this.service.auth(this.form.value).subscribe(
-    //   (res: any) => {
-    //     load.dismiss();
-    //     UserUtil.setUser(res);
-    //     this.navCtrl.navigateRoot('');
-    //   },
-    //   (err: any) => {
-    //     this.showError('Erro ao autenticar')
-    //   }
-    // );
+    this.service.auth(this.form.value).subscribe(
+      (res: any) => {
+        load.dismiss();
+        UserUtil.setUser(res);
+        this.navCtrl.navigateRoot('');
+      },
+      (err: any) => {
+        this.showError('Erro ao autenticar')
+      }
+    );
   }
   async showError(msg: string) {
     const toast = await this.toastCtrl.create({

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { UserUtil } from 'src/app/utils/user.util';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-menu',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuPage implements OnInit {
 
-  constructor() { }
+  constructor(private navCtrl: NavController) { }
 
   ngOnInit() {
   }
 
+  logout() {
+    UserUtil.cleanUser();
+    this.navCtrl.navigateRoot('/login');
+  }
 }
