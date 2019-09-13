@@ -1,72 +1,82 @@
-import { Directive, ElementRef, HostListener, Input } from '@angular/core';
+import { MenuController, ModalController } from '@ionic/angular';
+import { NavController } from '@ionic/angular';
 
-@Directive({
-  selector: '[mask]',
+import { Component } from '@angular/core';
+
+
+@Component({
+  selector: 'mask',
+
 })
 export class MaskDirective {
-  @Input('mask') mask: string;
 
-  constructor(private element: ElementRef) {
+  cpf_cnpj = '';
+  DECIMAL_SEPARATOR = ".";
+  GROUP_SEPARATOR = ",";
+  pureResult: any;
+  maskedId: any;
+  val: any;
+  v: any;
 
+  constructor(
+    public modalCtrl: ModalController,
+    private menu: MenuController,
+    public navCtrl: NavController,
+  ) { }
+
+  ionViewDidEnter() {
+    this.menu.swipeEnable(false);
+  }
+  ionViewWillLeave() {
+    this.menu.swipeEnable(true);
   }
 
-  @HostListener('input', ['$event']) onInputChange(event) {
-    if (event.inputType == 'deleteContentBackward')
-      return;
-
-    const initalValue = this.element.nativeElement.value;
-    initalValue.replace(/^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$/g, '');
-    if (initalValue !== this.element.nativeElement.value) {
-      event.stopPropagation();
+  format(valString) {
+    if (!valString) {
+      return '';
     }
-
-    this.element.nativeElement.value = this.format(this.mask, initalValue);
-  }
-
-  format(mask: string, value: any): string {
-    let text = '';
-    let data = value;
-    let c, m, i, x;
-
-    for (i = 0, x = 1; x && i < mask.length; ++i) {
-      c = data.charAt(i);
-      m = mask.charAt(i);
-
-      switch (mask.charAt(i)) {
-        case '#':
-          if (/\d/.test(c)) {
-            text += c;
-          } else {
-            x = 0;
-          }
-          break;
-
-        case 'A':
-          if (/[a-zA-Z]/i.test(c)) {
-            text += c;
-          } else {
-            x = 0;
-
-          }
-          break;
-
-        case 'N':
-          if (/[a-zA-Z0-9]/i.test(c)) {
-            text += c;
-          } else {
-            x = 0;
-          }
-          break;
-
-        case 'X':
-          text += c;
-          break;
-
-        default:
-          text += m;
-          break;
-      }
+    let val = valString.toString();
+    const parts = this.unFormat(val).split(this.DECIMAL_SEPARATOR);
+    this.pureResult = parts;
+    if (parts[0].length <= 11) {
+      this.maskedId = this.cpf_mask(parts[0]);
+      return this.maskedId;
+    } else {
+      this.maskedId = this.cnpj(parts[0]);
+      return this.maskedId;
     }
-    return text;
+  };
+
+  unFormat(val) {
+    if (!val) {
+      return '';
+    }
+    val = val.replace(/\D/g, '');
+
+    if (this.GROUP_SEPARATOR === ',') {
+      return val.replace(/,/g, '');
+    } else {
+      return val.replace(/\./g, '');
+    }
+  };
+
+  cpf_mask(v) {
+    v = v.replace(/\D/g, ''); //Remove tudo o que não é dígito
+    v = v.replace(/(\d{3})(\d)/, '$1.$2'); //Coloca um ponto entre o terceiro e o quarto dígitos
+    v = v.replace(/(\d{3})(\d)/, '$1.$2'); //Coloca um ponto entre o terceiro e o quarto dígitos
+    //de novo (para o segundo bloco de números)
+    v = v.replace(/(\d{3})(\d{1,2})$/, '$1-$2'); //Coloca um hífen entre o terceiro e o quarto dígitos
+    return v;
   }
+
+  cnpj(v) {
+    v = v.replace(/\D/g, ''); //Remove tudo o que não é dígito
+    v = v.replace(/^(\d{2})(\d)/, '$1.$2'); //Coloca ponto entre o segundo e o terceiro dígitos
+    v = v.replace(/^(\d{2})\.(\d{3})(\d)/, '$1.$2.$3'); //Coloca ponto entre o quinto e o sexto dígitos
+    v = v.replace(/\.(\d{3})(\d)/, '.$1/$2'); //Coloca uma barra entre o oitavo e o nono dígitos
+    v = v.replace(/(\d{4})(\d)/, '$1-$2'); //Coloca um hífen depois do bloco de quatro dígitos
+    return v;
+  }
+
+
 }

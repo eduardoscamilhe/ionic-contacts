@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { AddPage } from './add.page';
 import { ContactComponent } from 'src/app/components/contact/contact.component';
+import { MaskDirective } from 'src/app/directives/mask.directives';
 
 const routes: Routes = [
   {
@@ -24,6 +25,6 @@ const routes: Routes = [
     ReactiveFormsModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [AddPage]
+  declarations: [AddPage, ContactComponent]
 })
 export class AddPageModule { }

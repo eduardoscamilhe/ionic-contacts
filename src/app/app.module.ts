@@ -14,11 +14,12 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { LoadingComponent } from './components/loading/loading.component';
+import { MaskDirective } from './directives/mask.directives';
 
 
 
 @NgModule({
-  declarations: [AppComponent, MenuPage, LoadingComponent],
+  declarations: [AppComponent, MenuPage, LoadingComponent,],
   entryComponents: [],
   imports: [
     BrowserModule,
