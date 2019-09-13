@@ -1,0 +1,90 @@
+{
+    "id": "mockoon_export",
+    "appVersion": "1.4.0",
+    "checksum": "4e7be79aae6b8fd1bf670e6f27b71e9c",
+    "subject": "full",
+    "data": [
+        {
+            "uuid": "035681a0-d57d-11e9-964c-0b871a86cda6",
+            "name": "angular-contacts",
+            "endpointPrefix": "",
+            "latency": 0,
+            "port": 3000,
+            "routes": [
+                {
+                    "uuid": "efb585f0-d57d-11e9-964c-0b871a86cda6",
+                    "documentation": "",
+                    "method": "post",
+                    "endpoint": "user/auth",
+                    "body": "{\n    \n   \"message\":\"User has found\",\n    \"success\": true,\n     \"data\":{\n            \"username\":\"eduardo\",\n            \"password\":\"pass1234*\",\n            \"email\":\"eduardo@angular.com\"\n            } \n}",
+                    "latency": 0,
+                    "statusCode": "200",
+                    "headers": [
+                        {
+                            "key": "",
+                            "value": ""
+                        }
+                    ],
+                    "filePath": "",
+                    "sendFileAsBody": false
+                },
+                {
+                    "uuid": "05252c80-d590-11e9-964c-0b871a86cda6",
+                    "documentation": "",
+                    "method": "post",
+                    "endpoint": "users/create",
+                    "body": "{\n    \n   \"message\":\"User create\",\n    \"success\": true,\n     \"data\":{\n            \"username\":\"eduardo\",\n            \"password\":\"pass1234*\",\n            \"email\":\"eduardo@angular.com\"\n            } \n}",
+                    "latency": 0,
+                    "statusCode": "200",
+                    "headers": [
+                        {
+                            "key": "",
+                            "value": ""
+                        }
+                    ],
+                    "filePath": "",
+                    "sendFileAsBody": false
+                },
+                {
+                    "uuid": "ad12fb20-d590-11e9-964c-0b871a86cda6",
+                    "documentation": "",
+                    "method": "get",
+                    "endpoint": "contacts/get",
+                    "body": "[\n{\"id\":\"01\",\"name\":\"Ana Clara\", \"email\":\"aninha@mail.com\",\"cpf\":\"56487912366\",\"telefone\":\"33369995\" , \"Address\":{ \"street\":\"rua da ana\", \"number\":\"366\", \"country\":\"Brazil\", \"state\":\"sao paulo\", \"neighborhood\":\"bairro da ana\"}},\n\n{\"id\":\"02\",\"name\":\"Ana Clara\", \"email\":\"aninha@mail.com\",\"cpf\":\"56487912366\",\"telefone\":\"33369995\" , \"Address\":{ \"street\":\"rua da ana\", \"number\":\"366\", \"country\":\"Brazil\", \"state\":\"sao paulo\", \"neighborhood\":\"bairro da ana\"}},\n\n\n{\"id\":\"03\",\"name\":\"Ana Clara\", \"email\":\"aninha@mail.com\",\"cpf\":\"56487912366\",\"telefone\":\"33369995\" , \"Address\":{ \"street\":\"rua da ana\", \"number\":\"366\", \"country\":\"Brazil\", \"state\":\"sao paulo\", \"neighborhood\":\"bairro da ana\"}},\n\n{\"id\":\"04\",\"name\":\"Ana Clara\", \"email\":\"aninha@mail.com\",\"cpf\":\"56487912366\",\"telefone\":\"33369995\" , \"Address\":{ \"street\":\"rua da ana\", \"number\":\"366\", \"country\":\"Brazil\", \"state\":\"sao paulo\", \"neighborhood\":\"bairro da ana\"}},\n\n{\"id\":\"05\",\"name\":\"Ana Clara\", \"email\":\"aninha@mail.com\",\"cpf\":\"56487912366\",\"telefone\":\"33369995\" , \"Address\":{ \"street\":\"rua da ana\", \"number\":\"366\", \"country\":\"Brazil\", \"state\":\"sao paulo\", \"neighborhood\":\"bairro da ana\"}},\n\n{\"id\":\"06\",\"name\":\"Ana Julia\", \"email\":\"aninha@mail.com\",\"cpf\":\"56487912366\",\"telefone\":\"33369995\" , \"Address\":{ \"street\":\"rua da ana\", \"number\":\"366\", \"country\":\"Brazil\", \"state\":\"sao paulo\", \"neighborhood\":\"bairro da ana\"}},\n\n{\"id\":\"07\",\"name\":\"Teste do Demoniao\", \"email\":\"demoniao@mail.com\",\"cpf\":\"56487912366\",\"telefone\":\"33369995\" , \"Address\":{ \"street\":\"rua da ana\", \"number\":\"366\", \"country\":\"United States\", \"state\":\"sao paulo\", \"neighborhood\":\"bairro da ana\"}},\n\n{\"id\":\"08\",\"name\":\"Jynx Maze\", \"email\":\"aninha@mail.com\",\"cpf\":\"56487912366\",\"telefone\":\"33369995\" , \"Address\":{ \"street\":\"rua da ana\", \"number\":\"366\", \"country\":\"Brazil\", \"state\":\"sao paulo\", \"neighborhood\":\"bairro da ana\"}}\n\n\n]",
+                    "latency": 0,
+                    "statusCode": "200",
+                    "headers": [
+                        {
+                            "key": "",
+                            "value": ""
+                        }
+                    ],
+                    "filePath": "",
+                    "sendFileAsBody": false
+                }
+            ],
+            "proxyMode": false,
+            "proxyHost": "",
+            "https": false,
+            "cors": true,
+            "headers": [
+                {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                },
+                {
+                    "key": "Access-Control-Allow-Origin",
+                    "value": "*"
+                },
+                {
+                    "key": "Access-Control-Allow-Methods",
+                    "value": "GET,POST,PUT,PATCH,DELETE,HEAD,OPTIONS"
+                },
+                {
+                    "key": "Access-Control-Allow-Headers",
+                    "value": "Origin, X-Requested-With, Content-Type, Accept"
+                }
+            ]
+        }
+    ]
+}

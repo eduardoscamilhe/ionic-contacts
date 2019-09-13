@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Address } from 'src/app/models/address.model';
 import { Contact } from 'src/app/models/contact.model';
 import { ContactUtil } from 'src/app/utils/contact.util';
@@ -17,10 +17,10 @@ export class AddPage implements OnInit {
 
   constructor(private fb: FormBuilder, private navCtrl: NavController, private toastCtrl: ToastController) {
     this.form = this.fb.group({
-      name: [!this.editContact ? '' : `${this.editContact.name}`],
+      name: [!this.editContact ? '' : `${this.editContact.name}`, Validators.required],
       cpf: [!this.editContact ? '' : `${this.editContact.cpf}`],
       email: [!this.editContact ? '' : `${this.editContact.email}`],
-      phone: [!this.editContact ? '' : `${this.editContact.phone}`],
+      phone: [!this.editContact ? '' : `${this.editContact.phone}`, Validators.required],
       street: [!this.editContact ? '' : `${this.editContact.address.street}`],
       country: [!this.editContact ? '' : `${this.editContact.address.country}`],
       number: [!this.editContact ? '' : `${this.editContact.address.number}`],
